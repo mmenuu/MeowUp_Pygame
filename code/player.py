@@ -22,7 +22,7 @@ class Player(pygame.sprite.Sprite):
 		self.direction = pygame.math.Vector2(0,0)
 		self.speed = 8
 		self.gravity = 0.8
-		self.jump_speed = -18
+		self.jump_speed = -19
 		self.collision_rect = pygame.Rect(self.rect.topleft,(50,self.rect.height))
 
 		# player status
