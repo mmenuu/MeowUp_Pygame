@@ -5,7 +5,7 @@ from overworld import Overworld
 from ui import UI
 
 screen = pygame.display.set_mode((screen_width,screen_height))
-
+highscore = 0
 class Game:
 	def __init__(self):
 
