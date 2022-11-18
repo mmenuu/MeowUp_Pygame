@@ -54,20 +54,20 @@ class Game:
 		if self.cur_health <= 0:
 			self.game_status = 0
 			# gameover()
-			# self.cur_health = 100
-			# self.coins = 0
-			# self.max_level = 0
-			# self.overworld = Overworld(0,self.max_level,screen,self.create_level)
-			# self.status = 'overworld'
-			# self.level_bg_music.stop()
-			# self.overworld_bg_music.play(loops = -1)
+			self.cur_health = 100
+			self.coins = 0
+			self.max_level = 0
+			self.overworld = Overworld(0,self.max_level,screen,self.create_level)
+			self.status = 'overworld'
+			self.level_bg_music.stop()
+			self.overworld_bg_music.play(loops = -1)
 
 	def run(self):
-		if self.status == 'overworld':
+		if self.status == 'overworld' and self.game_status == 1:
 			self.overworld.run()
-		else:
-			self.check_game_over()
+		else:		
 			self.level.run()
 			self.ui.show_health(self.cur_health,self.max_health)
 			self.ui.show_coins(self.coins)
+			self.check_game_over()
 			
