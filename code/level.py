@@ -3,10 +3,13 @@ from support import import_csv_layout, import_cut_graphics
 from settings import tile_size, screen_height, screen_width
 from tiles import Tile, StaticTile, Crate, Coin, Palm
 from enemy import Enemy
+from enemy2 import Enemy2
+from enemy3 import Enemy3
 from decoration import Sky, Water, Clouds
 from player import Player
 from particles import ParticleEffect
 from game_data import levels
+from random import randint
 
 class Level:
 	def __init__(self,current_level,surface,create_overworld,change_coins,change_health):
@@ -113,8 +116,11 @@ class Level:
 						sprite = Palm(tile_size,x,y,'../graphics/terrain/palm_bg',64)
 
 					if type == 'enemies':
-						sprite = Enemy(tile_size,x,y)
-
+						enemy_rand = randint(0,2)
+						if enemy_rand == 0: sprite = Enemy(tile_size,x,y)
+						if enemy_rand == 1: sprite = Enemy2(tile_size,x,y)
+						if enemy_rand == 2: sprite = Enemy3(tile_size,x,y)
+      
 					if type == 'constraint':
 						sprite = Tile(tile_size,x,y)
 
