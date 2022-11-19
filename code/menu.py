@@ -48,7 +48,7 @@ def scores():
         screen.blit(scoreS_TEXT, scoreS_RECT)
 
         scoreS_BACK = Button(image=None, pos=(640, 460), 
-                            text_input="BACK", font=get_font(75), base_color="Black", hovering_color="Green")
+                            text_input="QUIT", font=get_font(75), base_color="Black", hovering_color="Green")
 
         scoreS_BACK.changeColor(scoreS_MOUSE_POS)
         scoreS_BACK.update(screen)
