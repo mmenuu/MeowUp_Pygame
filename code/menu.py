@@ -20,6 +20,7 @@ new_player_score = 0
 scores = []
 rankscores = []
 show = 0
+over=False
 
 BG = pygame.image.load("../graphics/menu/Background.png")
 name_BG = pygame.image.load("../graphics/menu/name.png")
@@ -59,13 +60,14 @@ def scores():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if scoreS_BACK.checkForInput(scoreS_MOUSE_POS):
-                    main_menu()
+                    main_menu(running,start)
 
         pygame.display.update()
 
 def main_menu(running,start):
     global game_status,show
     show = 0
+    game_status = 1
     while running:
         screen.blit(BG, (0, 0))
 
@@ -100,6 +102,7 @@ def main_menu(running,start):
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
                     screen.fill('black')
                     start = True
+                    game_status=1
                 if scoreS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     # scores()
                     rank()
@@ -108,11 +111,13 @@ def main_menu(running,start):
                     pygame.quit()
                     sys.exit()
         if start:
-            game.run()
+            game_status=1
+            # reset()
             gamegame()
         pygame.display.update()
         
 def gameover():
+    global game_status
     user_ip = ''
     text_box = pygame.Rect((screen_width/2 - 350/2, screen_height/2 - 20), (350, 50))
     active = False
@@ -140,7 +145,8 @@ def gameover():
                     file.write(f'{user_ip}, {prev_player_score}\n')
                     file.flush()
                     file.close()
-                    main_menu()
+                    main_menu(running,start)
+                    
             if event.type == pygame.KEYDOWN:
                 if active:
                     if event.key == pygame.K_BACKSPACE:
@@ -201,10 +207,10 @@ def gamegame():
         if new_player_score >= prev_player_score:
             prev_player_score = new_player_score
         if game_status == 1:
-            game.run()
+            game.run(over)
             game_status = game.game_status
-            print(game_status)
         elif game_status == 0:
+            game_status=1
             gameover()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -234,7 +240,9 @@ def rank():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
                 if menu_button.collidepoint((mx, my)):
-                    main_menu()
+                    # reset()
+                    main_menu(running,start)
         display_rank()
         pygame.display.update()
         clock.tick(60)
+        

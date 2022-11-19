@@ -1,14 +1,1 @@
-a, 0
-ss, 0
-ss, 0
-sss, 0
-ssd, 0
-sssss, 1
-eieieiei, 1
-eiei, 2
-sss, 7
-aaaa, 1
-sawaddee, 8
-eiei, 4
-eiei, 15
-eiei, 11
+test1, 66

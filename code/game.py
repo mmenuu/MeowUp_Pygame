@@ -6,6 +6,7 @@ from ui import UI
 
 screen = pygame.display.set_mode((screen_width,screen_height))
 highscore = 0
+over = False
 class Game:
 	def __init__(self):
 
@@ -52,6 +53,7 @@ class Game:
 
 	def check_game_over(self):
 		if self.cur_health <= 0:
+			over = True
 			self.game_status = 0
 			self.cur_health = 100
 			self.coins = 0
@@ -61,12 +63,15 @@ class Game:
 			self.level_bg_music.stop()
 			self.overworld_bg_music.play(loops = -1)
 
-	def run(self):
+	def run(self,over):
 		if self.status == 'overworld' and self.game_status == 1:
 			self.overworld.run()
 		else:		
 			self.level.run()
 			self.ui.show_health(self.cur_health,self.max_health)
 			self.ui.show_coins(self.coins)
-			self.check_game_over()
-			
+			if self.cur_health > 0:
+				self.game_status = 1
+			else:
+				self.game_status = 0
+				self.check_game_over()
