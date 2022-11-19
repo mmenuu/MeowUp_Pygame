@@ -74,6 +74,9 @@ def main_menu(running,start):
         MENU_TEXT = get_font(100).render("MEOW UP!", True, "White")
         MENU_RECT = MENU_TEXT.get_rect(center=(640, 250))
         
+        NAME_TEXT = get_font(10).render("Rachata Kithatthaporn 65010900", True, "White")
+        NAME_RECT = MENU_TEXT.get_rect(center=(screen_width-350, 150))
+        
 
         PLAY_BUTTON = Button(image=pygame.image.load("../graphics/menu/Play Rect.png"), pos=(screen_width/2-200, 350), 
                             text_input="PLAY", font=get_font(30), base_color="White", hovering_color="Violet")
@@ -83,6 +86,7 @@ def main_menu(running,start):
                             text_input="QUIT", font=get_font(30), base_color="White", hovering_color="Violet")
 
         screen.blit(MENU_TEXT, MENU_RECT)
+        screen.blit(NAME_TEXT, NAME_RECT)
 
         for button in [PLAY_BUTTON, scoreS_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
