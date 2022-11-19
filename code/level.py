@@ -117,9 +117,9 @@ class Level:
 
 					if type == 'enemies':
 						enemy_rand = randint(0,2)
-						if enemy_rand == 0: sprite = Enemy(tile_size,x,y)
-						if enemy_rand == 1: sprite = Enemy2(tile_size,x,y)
-						if enemy_rand == 2: sprite = Enemy3(tile_size,x,y)
+						if enemy_rand == 0: sprite = Enemy(tile_size,x,y,-10)
+						if enemy_rand == 1: sprite = Enemy2(tile_size,x,y,-15)
+						if enemy_rand == 2: sprite = Enemy3(tile_size,x,y,-20)
       
 					if type == 'constraint':
 						sprite = Tile(tile_size,x,y)
@@ -248,7 +248,7 @@ class Level:
 					self.explosion_sprites.add(explosion_sprite)
 					enemy.kill()
 				else:
-					self.player.sprite.get_damage()
+					self.player.sprite.get_damage(enemy.damage)
 
 	def run(self):
 		# run the entire game / level 
