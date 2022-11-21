@@ -1,1 +1,10 @@
 test1, 66
+test2, 141
+test3, 68
+test4, 6
+test5, 1
+test6, 0
+test7, 6
+menu, 12
+fpfjpofjpffgfg, 74
+csffsfssf fgg, 74
